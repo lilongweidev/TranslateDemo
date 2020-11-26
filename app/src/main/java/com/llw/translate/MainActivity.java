@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String httpStr = "http://api.fanyi.baidu.com/api/trans/vip/translate";
         String httpsStr = "https://fanyi-api.baidu.com/api/trans/vip/translate";
         //拼接请求的地址
-        String url = httpStr +
+        String url = httpsStr +
                 "?appid=" + appId + "&q=" + content + "&from=" + fromType + "&to=" +
                 toType + "&salt=" + salt + "&sign=" + sign;
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -371,8 +371,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         StringBuilder hex = new StringBuilder(hash.length * 2);
         for (byte b : hash) {
-            if ((b & 0xFF) < 0x10)
+            if ((b & 0xFF) < 0x10) {
                 hex.append("0");
+            }
             hex.append(Integer.toHexString(b & 0xFF));
         }
 
