@@ -326,6 +326,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     final TranslateResult result = new Gson().fromJson(object.toString(), TranslateResult.class);
                     tvTranslation.setVisibility(View.GONE);
                     //显示翻译的结果
+
+                    if(result.getTrans_result().get(0).getDst() == null){
+                        showMsg("数据为空");
+                    }
                     tvResult.setText(result.getTrans_result().get(0).getDst());
                     resultLay.setVisibility(View.VISIBLE);
                     beforeLay.setVisibility(View.GONE);
